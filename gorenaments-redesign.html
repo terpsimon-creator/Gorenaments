@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gorenaments — Collectible horror ornaments, sculpted by Len Simon</title>
+<meta name="description" content="Hand-painted resin ornaments sculpted by animation director Len Simon. Limited runs. Series 1–4, Collectible editions, Special Editions, and Spaznicks statues.">
+<!--
+  GORENAMENTS HOMEPAGE REDESIGN — MOCKUP v0.1 (Sept 2026)
+  Single file, no build step, no dependencies except Google Fonts.
+  Product art is placeholder (ornament silhouettes). Swap in real photos.
+  Toggle the "Design notes" button (bottom-right) to see the reasoning behind each section.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pine:#0F2A22;        /* deep evergreen, main dark surface */
+    --pine-2:#163B30;      /* lighter pine for panels */
+    --parchment:#EFE4CE;   /* aged ornament-box paper, light surface */
+    --parchment-2:#E3D5B8; /* darker paper for cards */
+    --cranberry:#9B1B2A;   /* primary action, blood-red-but-Christmas */
+    --gold:#C8A45A;        /* tarnished gold, accents and hooks */
+    --ink:#1A1614;         /* body text on light */
+    --mist:#B9C7BF;        /* muted text on dark */
+    --font-display:'Rye', Georgia, serif;
+    --font-body:'Source Sans 3', system-ui, sans-serif;
+    --max:1180px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font-body);font-size:18px;line-height:1.5;color:var(--ink);background:var(--parchment)}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.05;margin:0}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .btn{display:inline-block;font-family:var(--font-body);font-weight:600;font-size:17px;padding:14px 26px;border-radius:4px;text-decoration:none;border:2px solid transparent;cursor:pointer;line-height:1}
+  .btn-primary{background:var(--cranberry);color:#fff;border-color:var(--cranberry)}
+  .btn-primary:hover{background:#7E1522;border-color:#7E1522}
+  .btn-ghost{background:transparent;color:var(--parchment);border-color:var(--gold)}
+  .btn-ghost:hover{background:rgba(200,164,90,.12)}
+  .btn-dark{background:var(--pine);color:var(--parchment);border-color:var(--pine)}
+  .btn-dark:hover{background:var(--pine-2)}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+  /* Announcement */
+  .announce{background:var(--cranberry);color:#fff;text-align:center;font-size:15px;padding:9px 16px}
+  .announce strong{font-weight:600}
+
+  /* Header */
+  header{background:var(--pine);color:var(--parchment);position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(200,164,90,.25)}
+  .nav{display:flex;align-items:center;gap:32px;height:68px}
+  .brand{font-family:var(--font-display);font-size:26px;text-decoration:none;color:var(--gold);letter-spacing:.5px}
+  .nav ul{list-style:none;display:flex;gap:26px;margin:0 0 0 auto;padding:0;font-size:16px}
+  .nav ul a{text-decoration:none;color:var(--mist)}
+  .nav ul a:hover{color:var(--parchment)}
+  .cart{display:flex;align-items:center;gap:8px;color:var(--parchment);text-decoration:none;font-size:16px;font-weight:600}
+  .cart span{background:var(--gold);color:var(--pine);border-radius:999px;padding:1px 8px;font-size:13px}
+  .menu-btn{display:none;background:none;border:1px solid var(--gold);color:var(--parchment);padding:8px 12px;border-radius:4px;margin-left:auto;font:inherit;font-size:15px}
+
+  /* Hero */
+  .hero{background:var(--pine);color:var(--parchment);padding:24px 0 72px;overflow:hidden;position:relative}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .hero h1{font-size:clamp(44px,6.2vw,84px);color:var(--parchment)}
+  .hero p.lead{font-size:21px;color:var(--mist);max-width:38ch;margin:22px 0 32px}
+  .hero .actions{display:flex;gap:14px;flex-wrap:wrap}
+  .hero .fine{margin-top:26px;font-size:15px;color:var(--mist)}
+  .garland{width:100%;height:auto}
+  @media (prefers-reduced-motion:no-preference){
+    .sway{transform-box:fill-box;transform-origin:50% 0;animation:sway 6s ease-in-out infinite}
+    .garland > g:nth-of-type(2) .sway{animation-delay:-1.3s;animation-duration:7s}
+    .garland > g:nth-of-type(3) .sway{animation-delay:-2.7s;animation-duration:6.4s}
+    .garland > g:nth-of-type(4) .sway{animation-delay:-.6s;animation-duration:7.6s}
+    .garland > g:nth-of-type(5) .sway{animation-delay:-3.4s;animation-duration:6.8s}
+    @keyframes sway{0%,100%{transform:rotate(-2.2deg)}50%{transform:rotate(2.2deg)}}
+  }
+
+  /* Trust line */
+  .trust{background:var(--gold);color:var(--pine);font-weight:600;font-size:16px}
+  .trust .wrap{display:flex;gap:0;justify-content:space-between;flex-wrap:wrap}
+  .trust span{padding:12px 0}
+
+  /* Sections */
+  section{padding:72px 0}
+  .section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:34px;flex-wrap:wrap}
+  .section-head h2{font-size:clamp(32px,4vw,48px)}
+  .section-head p{margin:8px 0 0;max-width:52ch;color:#4A4340}
+
+  /* Series tabs */
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+  .tab{font:inherit;font-weight:600;font-size:16px;padding:10px 16px;border-radius:999px;border:1.5px solid var(--pine);background:transparent;color:var(--pine);cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--pine);color:var(--parchment)}
+  .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+  .card{background:var(--parchment-2);border-radius:6px;padding:18px 16px 16px;display:flex;flex-direction:column;gap:10px;position:relative}
+  .card .art{aspect-ratio:1/1.15;display:grid;place-items:center}
+  .card .art svg{width:78%;height:auto}
+  .card h3{font-family:var(--font-body);font-weight:600;font-size:19px}
+  .card .price{display:flex;justify-content:space-between;align-items:baseline;font-size:17px}
+  .card .price small{color:#6B625D;font-size:14px}
+  .card .btn{padding:11px 0;text-align:center;font-size:16px}
+  .card .tag{position:absolute;top:12px;left:12px;background:var(--cranberry);color:#fff;font-size:12px;font-weight:600;padding:3px 8px;border-radius:3px}
+  .card.bundle{background:var(--pine);color:var(--parchment)}
+  .card.bundle h3{font-family:var(--font-display);font-weight:400;font-size:24px;color:var(--gold)}
+  .card.bundle p{margin:0;font-size:15px;color:var(--mist)}
+  .card.bundle .price small{color:var(--mist)}
+  .card.bundle .art{aspect-ratio:auto;height:110px}
+  .edition-toggle{display:inline-flex;border:1.5px solid var(--pine);border-radius:999px;overflow:hidden;font-size:15px;font-weight:600}
+  .edition-toggle button{font:inherit;background:transparent;border:0;padding:8px 14px;color:var(--pine);cursor:pointer}
+  .edition-toggle button[aria-pressed="true"]{background:var(--pine);color:var(--parchment)}
+
+  /* Sculptor */
+  .sculptor{background:var(--pine);color:var(--parchment)}
+  .sculptor .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+  .sculptor h2{font-size:clamp(34px,4vw,52px);color:var(--gold)}
+  .sculptor p{color:var(--mist);font-size:19px;max-width:56ch}
+  .sculptor .credits{margin:26px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 24px;font-size:16px;color:var(--parchment)}
+  .sculptor .credits li::before{content:"";display:inline-block;width:8px;height:8px;background:var(--gold);border-radius:50%;margin-right:10px;vertical-align:middle}
+  .portrait{aspect-ratio:4/5;background:var(--pine-2);border:1px solid rgba(200,164,90,.35);border-radius:6px;display:grid;place-items:center;color:var(--mist);font-size:15px;text-align:center;padding:20px}
+
+  /* Behind the scenes */
+  .bts .grid{grid-template-columns:repeat(3,1fr)}
+  .video{background:var(--pine);border-radius:6px;aspect-ratio:16/9;display:grid;place-items:center;color:var(--parchment);text-decoration:none;position:relative}
+  .video .play{width:56px;height:56px;border-radius:50%;background:var(--cranberry);display:grid;place-items:center}
+  .video .play::after{content:"";border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
+  .video figcaption{position:absolute;left:14px;bottom:12px;font-size:15px;font-weight:600}
+
+  /* Newsletter */
+  .signup{background:var(--parchment-2)}
+  .signup .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  .signup h2{font-size:clamp(30px,3.6vw,44px)}
+  .signup p{color:#4A4340;max-width:44ch}
+  .signup form{display:flex;gap:10px}
+  .signup input{flex:1;font:inherit;font-size:17px;padding:13px 16px;border:1.5px solid var(--pine);border-radius:4px;background:#fff}
+
+  /* Footer */
+  footer{background:var(--pine);color:var(--mist);padding:40px 0;font-size:15px}
+  footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer ul{list-style:none;padding:0;margin:0;display:flex;gap:22px;flex-wrap:wrap}
+  footer a{color:var(--mist);text-decoration:none}
+  footer a:hover{color:var(--parchment)}
+
+  /* Design notes overlay */
+  .notes-toggle{position:fixed;right:18px;bottom:18px;z-index:40;background:var(--gold);color:var(--pine);border:0;font:inherit;font-weight:600;font-size:15px;padding:12px 16px;border-radius:999px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+  .note{display:none;border-left:4px solid var(--gold);background:#fff8e8;color:var(--ink);font-size:15px;padding:10px 14px;margin:0 0 22px;line-height:1.45}
+  .note b{font-weight:600}
+  body.show-notes .note{display:block}
+  .hero .note,.sculptor .note{background:rgba(255,248,232,.95)}
+
+  /* Responsive */
+  @media (max-width:980px){
+    .grid{grid-template-columns:repeat(3,1fr)}
+    .hero .wrap,.sculptor .wrap,.signup .wrap{grid-template-columns:1fr}
+    .hero .garland-wrap{order:-1;max-width:520px;margin:0 auto}
+  }
+  @media (max-width:720px){
+    body{font-size:17px}
+    .nav ul{display:none}
+    .menu-btn{display:block}
+    .cart{margin-left:0}
+    .grid{grid-template-columns:repeat(2,1fr);gap:14px}
+    .bts .grid{grid-template-columns:1fr}
+    .signup form{flex-direction:column}
+    .trust .wrap{flex-direction:column;gap:0}
+    .trust span{padding:8px 0}
+    section{padding:52px 0}
+  }
+</style>
+</head>
+<body>
+
+<div class="announce"><strong>Free shipping on orders over $75</strong> through October 31. Series 4 ships in 2–3 business days.</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#">Gorenaments</a>
+    <ul>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#sculptor">The sculptor</a></li>
+      <li><a href="#bts">Behind the scenes</a></li>
+      <li><a href="#">Wholesale</a></li>
+    </ul>
+    <button class="menu-btn" aria-label="Open menu">Menu</button>
+    <a class="cart" href="#">Cart <span>0</span></a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="note"><b>Why this hero:</b> the old site opens with a GIF and three stacked words. This opens with the product's one-line pitch and the maker's credibility in the same breath. The garland is a placeholder for a real photo of ornaments hanging on a tree — that photo is the single most important asset to shoot.</p>
+      <h1>Horror belongs on the tree.</h1>
+      <p class="lead">Collectible ornaments sculpted by animation director Len Simon, cast in resin and painted by hand. Each character runs in a limited batch, then it's gone.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#shop">Shop Series 4</a>
+        <a class="btn btn-ghost" href="#families">Adopt a whole family</a>
+      </div>
+      <p class="fine">$35 each. Five-character families $145. Ships from the U.S.</p>
+    </div>
+    <div class="garland-wrap">
+      <!-- Placeholder ornaments: swap for a hero photograph. Colors map to series. -->
+      <svg class="garland" viewBox="0 0 560 420" role="img" aria-label="Five ornaments hanging from a garland">
+        <path d="M0 60 C120 40 200 110 280 80 S440 30 560 70" fill="none" stroke="#C8A45A" stroke-width="3"/>
+        <g transform="translate(70 73)"><g class="sway"><line x1="0" y1="0" x2="0" y2="70" stroke="#C8A45A" stroke-width="2"/><rect x="-12" y="68" width="24" height="18" rx="3" fill="#C8A45A"/><circle cx="0" cy="140" r="56" fill="#9B1B2A"/><text x="0" y="149" text-anchor="middle" font-family="Rye" font-size="30" fill="#EFE4CE">W</text></g></g>
+        <g transform="translate(175 92)"><g class="sway"><line x1="0" y1="0" x2="0" y2="40" stroke="#C8A45A" stroke-width="2"/><rect x="-12" y="38" width="24" height="18" rx="3" fill="#C8A45A"/><circle cx="0" cy="110" r="56" fill="#3A5A50"/><text x="0" y="119" text-anchor="middle" font-family="Rye" font-size="30" fill="#EFE4CE">V</text></g></g>
+        <g transform="translate(282 80)"><g class="sway"><line x1="0" y1="0" x2="0" y2="95" stroke="#C8A45A" stroke-width="2"/><rect x="-12" y="93" width="24" height="18" rx="3" fill="#C8A45A"/><circle cx="0" cy="165" r="56" fill="#E3D5B8"/><text x="0" y="174" text-anchor="middle" font-family="Rye" font-size="30" fill="#0F2A22">M</text></g></g>
+        <g transform="translate(392 50)"><g class="sway"><line x1="0" y1="0" x2="0" y2="55" stroke="#C8A45A" stroke-width="2"/><rect x="-12" y="53" width="24" height="18" rx="3" fill="#C8A45A"/><circle cx="0" cy="125" r="56" fill="#5A4A78"/><text x="0" y="134" text-anchor="middle" font-family="Rye" font-size="30" fill="#EFE4CE">F</text></g></g>
+        <g transform="translate(495 63)"><g class="sway"><line x1="0" y1="0" x2="0" y2="80" stroke="#C8A45A" stroke-width="2"/><rect x="-12" y="78" width="24" height="18" rx="3" fill="#C8A45A"/><circle cx="0" cy="150" r="56" fill="#2A2A2A"/><text x="0" y="159" text-anchor="middle" font-family="Rye" font-size="30" fill="#C8A45A">K</text></g></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="trust"><div class="wrap">
+  <span>Sculpted by hand</span><span>Cast in high-strength resin</span><span>Hand-painted, every one</span><span>Limited production runs</span>
+</div></div>
+
+<section id="shop">
+  <div class="wrap">
+    <p class="note"><b>Why tabs instead of one long list:</b> the old homepage stacks all 32 products in seven headings. Tabs keep every series one click away without a scroll wall, and the Standard/Collectible toggle replaces duplicate product listings.</p>
+    <div class="section-head">
+      <div>
+        <h2>Shop by series</h2>
+        <p>Five characters per series. Buy one, or adopt the family and save $30.</p>
+      </div>
+      <div class="edition-toggle" role="group" aria-label="Edition">
+        <button aria-pressed="true">Standard $35</button>
+        <button aria-pressed="false">Collectible $45</button>
+      </div>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="false">Series 1</button>
+      <button class="tab" role="tab" aria-selected="false">Series 2</button>
+      <button class="tab" role="tab" aria-selected="false">Series 3</button>
+      <button class="tab" role="tab" aria-selected="true">Series 4</button>
+      <button class="tab" role="tab" aria-selected="false">Special editions</button>
+      <button class="tab" role="tab" aria-selected="false">Spaznicks statues</button>
+    </div>
+
+    <div class="grid" id="families">
+      <article class="card"><span class="tag">New</span>
+        <div class="art"><svg viewBox="0 0 120 140" aria-hidden="true"><rect x="48" y="4" width="24" height="16" rx="3" fill="#C8A45A"/><circle cx="60" cy="80" r="56" fill="#9B1B2A"/><text x="60" y="90" text-anchor="middle" font-family="Rye" font-size="30" fill="#EFE4CE">S</text></svg></div>
+        <h3>Evil Santa</h3>
+        <div class="price"><strong>$35</strong><small>Series 4</small></div>
+        <a class="btn btn-dark" href="#">Add to cart</a>
+      </article>
+      <article class="card">
+        <div class="art"><svg viewBox="0 0 120 140" aria-hidden="true"><rect x="48" y="4" width="24" height="16" rx="3" fill="#C8A45A"/><circle cx="60" cy="80" r="56" fill="#3A5A50"/><text x="60" y="90" text-anchor="middle" font-family="Rye" font-size="30" fill="#EFE4CE">L</text></svg></div>
+        <h3>Lobo</h3>
+        <div class="price"><strong>$35</strong><small>Series 4</small></div>
+        <a class="btn btn-dark" href="#">Add to cart</a>
+      </article>
+      <article class="card">
+        <div class="art"><svg viewBox="0 0 120 140" aria-hidden="true"><rect x="48" y="4" width="24" height="16" rx="3" fill="#C8A45A"/><circle cx="60" cy="80" r="56" fill="#E3D5B8" stroke="#0F2A22" stroke-width="2"/><text x="60" y="90" text-anchor="middle" font-family="Rye" font-size="30" fill="#0F2A22">S</text></svg></div>
+        <h3>Scrooge</h3>
+        <div class="price"><strong>$35</strong><small>Series 4</small></div>
+        <a class="btn btn-dark" href="#">Add to cart</a>
+      </article>
+      <article class="card">
+        <div class="art"><svg viewBox="0 0 120 140" aria-hidden="true"><rect x="48" y="4" width="24" height="16" rx="3" fill="#C8A45A"/><circle cx="60" cy="80" r="56" fill="#5A4A78"/><text x="60" y="90" text-anchor="middle" font-family="Rye" font-size="30" fill="#EFE4CE">M</text></svg></div>
+        <h3>Marley</h3>
+        <div class="price"><strong>$35</strong><small>Series 4</small></div>
+        <a class="btn btn-dark" href="#">Add to cart</a>
+      </article>
+      <article class="card">
+        <div class="art"><svg viewBox="0 0 120 140" aria-hidden="true"><rect x="48" y="4" width="24" height="16" rx="3" fill="#C8A45A"/><circle cx="60" cy="80" r="56" fill="#2A2A2A"/><text x="60" y="90" text-anchor="middle" font-family="Rye" font-size="30" fill="#C8A45A">S</text></svg></div>
+        <h3>Evil Snowman</h3>
+        <div class="price"><strong>$35</strong><small>Series 4</small></div>
+        <a class="btn btn-dark" href="#">Add to cart</a>
+      </article>
+    </div>
+
+    <div class="grid" style="margin-top:20px;grid-template-columns:1fr">
+      <article class="card bundle" style="flex-direction:row;align-items:center;gap:28px;flex-wrap:wrap">
+        <div class="art" style="width:170px"><svg viewBox="0 0 200 110" aria-hidden="true"><g fill="#C8A45A"><rect x="12" y="6" width="16" height="10" rx="2"/><rect x="52" y="6" width="16" height="10" rx="2"/><rect x="92" y="6" width="16" height="10" rx="2"/><rect x="132" y="6" width="16" height="10" rx="2"/><rect x="172" y="6" width="16" height="10" rx="2"/></g><circle cx="20" cy="50" r="26" fill="#9B1B2A"/><circle cx="60" cy="50" r="26" fill="#3A5A50"/><circle cx="100" cy="50" r="26" fill="#E3D5B8"/><circle cx="140" cy="50" r="26" fill="#5A4A78"/><circle cx="180" cy="50" r="26" fill="#2A2A2A"/></svg></div>
+        <div style="flex:1;min-width:220px">
+          <h3>Series 4 family</h3>
+          <p>All five characters, boxed together. Save $30 versus buying them one at a time.</p>
+        </div>
+        <div class="price" style="gap:20px"><strong style="font-size:26px">$145</strong><small>was $175</small></div>
+        <a class="btn btn-primary" href="#">Add the family</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sculptor" id="sculptor">
+  <div class="wrap">
+    <div class="portrait">Photo of Len at the sculpting bench<br>(or a short looping clip of a character being painted)</div>
+    <div>
+      <p class="note"><b>Why this section exists:</b> the old site mentions Len in one sentence. Buyers pay $35–200 for these because a real animation director sculpted them. That story is the difference between "cute horror ornament" and "collectible art." It also links to LenSimon.com once that hub is rebuilt.</p>
+      <h2>Sculpted by Len Simon</h2>
+      <p>Len spent thirty years animating characters for the big screen before he started sculpting them in resin. Every Gorenament begins as one of his sketches, is sculpted by his hand, cast in small batches, and hand-painted before it ships.</p>
+      <ul class="credits">
+        <li>Animation Director, Anastasia</li>
+        <li>Animation Director, Titan A.E.</li>
+        <li>Prince of Egypt</li>
+        <li>Spirit: Stallion of the Cimarron</li>
+        <li>Curious George</li>
+        <li>Klaus (2019)</li>
+      </ul>
+      <p style="margin-top:26px"><a class="btn btn-ghost" href="#">Read Len's story</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="bts" id="bts">
+  <div class="wrap">
+    <p class="note"><b>Why videos, not a blog:</b> the existing "Behind the Scenes" is two blog posts from April 2024 filed under "Uncategorized." Len already makes character videos; this surfaces them as a grid he can add to from YouTube without writing a post.</p>
+    <div class="section-head">
+      <div>
+        <h2>Meet the characters</h2>
+        <p>Short films from the workshop. Where each monster came from, and how it gets made.</p>
+      </div>
+      <a class="btn btn-dark" href="#">Watch all</a>
+    </div>
+    <div class="grid">
+      <figure class="video" style="margin:0"><span class="play"></span><figcaption>Wolfie: full moon camping alert</figcaption></figure>
+      <figure class="video" style="margin:0"><span class="play"></span><figcaption>Vlad's castle in Transylvania</figcaption></figure>
+      <figure class="video" style="margin:0"><span class="play"></span><figcaption>How a Gorenament gets painted</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="signup">
+  <div class="wrap">
+    <div>
+      <h2>Get the first look at Series 5</h2>
+      <p>One email when a new series drops, one when a special edition is about to sell out. That's it.</p>
+    </div>
+    <form onsubmit="event.preventDefault();this.querySelector('button').textContent='You\'re on the list'">
+      <input type="email" placeholder="your@email.com" aria-label="Email address" required>
+      <button class="btn btn-primary" type="submit">Join the list</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Gorenaments. Designed and sculpted in the U.S.</div>
+    <ul>
+      <li><a href="#">Shipping and returns</a></li>
+      <li><a href="#">Wholesale and bulk orders</a></li>
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Facebook</a></li>
+      <li><a href="#">LenSimon.com</a></li>
+    </ul>
+  </div>
+</footer>
+
+<button class="notes-toggle" onclick="document.body.classList.toggle('show-notes');this.textContent=document.body.classList.contains('show-notes')?'Hide design notes':'Show design notes'">Show design notes</button>
+
+<script>
+  // Mockup-only interactions: tabs and edition toggle just swap state so the flow can be demoed.
+  document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected','false'));
+    t.setAttribute('aria-selected','true');
+  }));
+  const tog=document.querySelectorAll('.edition-toggle button');
+  tog.forEach(b=>b.addEventListener('click',()=>{
+    tog.forEach(x=>x.setAttribute('aria-pressed','false'));
+    b.setAttribute('aria-pressed','true');
+    const collectible=b.textContent.startsWith('Collectible');
+    document.querySelectorAll('#families .card:not(.bundle) .price strong').forEach(p=>p.textContent=collectible?'$45':'$35');
+  }));
+</script>
+</body>
+</html>
